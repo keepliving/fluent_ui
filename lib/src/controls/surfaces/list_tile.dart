@@ -1,12 +1,12 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/rendering.dart';
 
-const kOneLineTileHeight = 40.0;
+const kOneLineTileHeight = 26.0;
 
 const kDefaultListTilePadding = EdgeInsetsDirectional.only(
-  end: 12.0,
-  top: 6.0,
-  bottom: 6.0,
+  end: 0.0,
+  top: 0.0,
+  bottom: 0.0,
 );
 
 const kDefaultListTileShape = RoundedRectangleBorder(
@@ -179,8 +179,7 @@ class ListTile extends StatelessWidget {
     final theme = FluentTheme.of(context);
 
     return HoverButton(
-      onPressed:
-          onPressed ?? (onSelectionChange != null ? _onSelectionChange : null),
+      onPressed: onPressed ?? (onSelectionChange != null ? _onSelectionChange : null),
       focusNode: focusNode,
       autofocus: autofocus,
       builder: (context, states) {
@@ -215,8 +214,7 @@ class ListTile extends StatelessWidget {
                 children: [
                   if (title != null)
                     DefaultTextStyle(
-                      style: (theme.typography.body ?? const TextStyle())
-                          .copyWith(fontSize: 16),
+                      style: (theme.typography.body ?? const TextStyle()).copyWith(fontSize: 14),
                       overflow: TextOverflow.clip,
                       child: title!,
                     ),
@@ -242,7 +240,7 @@ class ListTile extends StatelessWidget {
               minHeight: kOneLineTileHeight,
               minWidth: 88.0,
             ),
-            margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+            margin: const EdgeInsets.symmetric(horizontal: 1, vertical: 1),
             child: ContentManager(content: (context) {
               final tileHeight = ContentSizeInfo.of(context).size.height;
               return Row(children: [
@@ -287,10 +285,8 @@ class ListTile extends StatelessWidget {
                             width: 3.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100.0),
-                              color: selected
-                                  ? theme.accentColor
-                                      .defaultBrushFor(theme.brightness)
-                                  : Colors.transparent,
+                              color:
+                                  selected ? theme.accentColor.defaultBrushFor(theme.brightness) : Colors.transparent,
                             ),
                             margin: const EdgeInsets.only(right: 8.0),
                           ),
